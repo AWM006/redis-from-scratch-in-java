@@ -1,7 +1,7 @@
 package com.awm.redis.FirstCallPoint;
 
 import org.springframework.web.bind.annotation.*;
-
+import com.awm.redis.codeValidator.Validator;
 
 @RestController
 public class FirstPoint {
@@ -13,8 +13,12 @@ public class FirstPoint {
             return "";
         }
 
-        if (body.toLowerCase().contains("hello")) {
-            return "hello world";
+        if (body.toLowerCase().contains("")) {
+
+            Validator ValidOrNot = new Validator();
+            String response = ValidOrNot.validating(body.toLowerCase());
+
+            return response;
         }
 
         return "error";
