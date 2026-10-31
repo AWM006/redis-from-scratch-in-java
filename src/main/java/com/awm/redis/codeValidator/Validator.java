@@ -14,6 +14,9 @@ public class Validator {
         String decoded = URLDecoder.decode(encoded, StandardCharsets.UTF_8); //here string came like "hello+set+pp%3aAWM" this decode into "hello set pp:awm"
         StringBuilder sb = new StringBuilder();
 
+        if(decoded.length() <= 6){
+            return "no argument found";
+        }
         
         int i=0;
         

@@ -1,7 +1,7 @@
 package com.awm.redis.MethodSelector;
 
 import java.util.ArrayList;
-
+import com.awm.redis.methods.*;
 
 public class SelectMethod {
     
@@ -53,6 +53,33 @@ public class SelectMethod {
 
 
         
-        return values.toString();
+
+        switch(values.get(0)){
+            
+            case "ping":
+                return new ping().method(values);
+            case "set":
+                return new set().method(values);
+            case "get":
+                return new get().method(values);
+            case "exists":
+                return new exists().method(values);
+            case "del":
+                return new del().method(values);
+            case "hset":
+                return new hset().method(values);
+            case "hget":
+                return new hget().method(values);
+            case "hgetall":
+                return new hgetall().method(values);
+            case "hexists":
+                return new hexists().method(values);
+            case "hdel":
+                return new hdel().method(values);
+            default:
+                return "no "+values.get(0)+" found";
+        }
+
+
     }
 }
