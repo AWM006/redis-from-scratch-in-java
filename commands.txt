@@ -1,0 +1,18 @@
+for manual way (without start script)
+
+1) in source code direcotory use "./mvnw spring-boot:run"
+
+2) when started use another terminal in same machine and call api using "curl" with following paramenter
+
+curl -X POST "http://localhost:8080/" -d "hello ping"   #to check server runnong or not
+
+curl -X POST "http://localhost:8080/" -d "hello set <key1>:<value1> <key2>:<value2> <key3>:<value3> ..... <keyN>:<valueN>"      #for insertion
+
+curl -X POST "http://localhost:8080/" -d "hello get <key1> <key2> ...... <keyN>"     #for get value along key
+
+curl -X POST "http://localhost:8080/" -d "hello exists <key1> <key2> ...... <keyN>" #for get key exist or not along
+
+curl -X POST "http://localhost:8080/" -d "hello del <key1> <key2> ...... <keyN>" #for delete key and value from memory 
+
+curl -X POST "http://localhost:8080/" -d "hello ttl <second> <key1>:<value1> <key2>:<value2> <key3>:<value3>" #for save a key and value for some second 
+

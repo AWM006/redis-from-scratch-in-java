@@ -26,13 +26,17 @@ public class set {
         }
 
 
-
+        for (String item : response) {
+            if (item.isBlank()) {
+                return "remove extra spaces";
+            }
+        }
 
 
         //put values
         for (int i = 1; i < response.size(); i+=2) {
-            
-            inventory.put(response.get(i), response.get(i+1));
+
+                inventory.put(response.get(i), response.get(i+1));
         } 
 
 

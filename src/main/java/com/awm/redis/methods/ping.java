@@ -1,6 +1,5 @@
 package com.awm.redis.methods;
 
-import java.util.ArrayList;
 
 public class ping {
     

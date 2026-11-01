@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import com.awm.redis.store.storeData;
 import com.awm.redis.codeToList.listmaker;
-import com.awm.redis.store.storeData;
 
 
 public class get {
@@ -24,13 +23,11 @@ public class get {
         }
         
 
-        sb.append("{\n");
         for (int i = 1; i < response.size(); i++) {
             
             value = inventory.get(response.get(i));
             sb.append(response.get(i)+":"+value+"\n");
         }
-        sb.append("}");
         
         return sb.toString();
     }

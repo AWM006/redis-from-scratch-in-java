@@ -51,16 +51,8 @@ public class SelectMethod {
                 return new exists().method(command, inventory);
             case "del":
                 return new del().method(command, inventory);
-            case "hset":
-                return new hset().method(command, inventory);
-            case "hget":
-                return new hget().method(command, inventory);
-            case "hgetall":
-                return new hgetall().method(command, inventory);
-            case "hexists":
-                return new hexists().method(command, inventory);
-            case "hdel":
-                return new hdel().method(command, inventory);
+            case "ttl":
+                return new ttl().method(command, inventory);
             default:
                 return "no "+sb.toString()+" found";
         }
