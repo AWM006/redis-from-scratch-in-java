@@ -1,11 +1,12 @@
 package com.awm.redis.methods;
 
-import java.util.ArrayList;
+
+import com.awm.redis.store.storeData;
 
 public class hexists {
        
-    public String method(ArrayList<String> list){
+    public String method(String command, storeData inventory){
 
-        return "hexists";
+        return "pong";
     } 
 }

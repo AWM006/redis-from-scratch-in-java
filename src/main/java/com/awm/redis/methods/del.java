@@ -1,11 +1,12 @@
 package com.awm.redis.methods;
 
-import java.util.ArrayList;
+
+import com.awm.redis.store.storeData;
 
 public class del {
         
-    public String method(ArrayList<String> list){
+    public String method(String command, storeData inventory){
 
-        return "del";
+        return "pong";
     }
 }

@@ -1,11 +1,14 @@
 package com.awm.redis.methods;
 
-import java.util.ArrayList;
+
+import java.util.Map;
+
+import com.awm.redis.store.storeData;
 
 public class hgetall {
     
-    public String method(ArrayList<String> list){
+    public String method(String command, storeData inventory){
 
-        return "hgetall";
+        return "pong";
     }    
 }

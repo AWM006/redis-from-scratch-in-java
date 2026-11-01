@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ping {
     
-    public String method(ArrayList<String> list){
+    public String method(String command){
 
         return "pong";
     }

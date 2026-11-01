@@ -1,83 +1,68 @@
 package com.awm.redis.MethodSelector;
 
-import java.util.ArrayList;
-import com.awm.redis.methods.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.awm.redis.methods.*;
+import com.awm.redis.store.storeData;
+
+@Component
 public class SelectMethod {
+
+
+    @Autowired
+    public storeData inventory;
+    
+    
+
     
     public String slector(String command){
-
         StringBuilder sb = new StringBuilder();
-        ArrayList<String> values = new ArrayList<String>();
-
-        String prev = "colon";
-
+        
         for(int i=6; i<command.length(); i++){
             
-            //break the command into single values
-            if(command.charAt(i) != ' ' && command.charAt(i) != ':'){
+            //break the command into single command
+            if(command.charAt(i) != ' '){
                 sb.append(command.charAt(i));
                 continue;
             }
 
-            //validating each values then insert into list
-            if(command.charAt(i) == ' ' || command.charAt(i) == ':'){
-              System.out.println(sb.toString()+" came");
-                
-                if(command.charAt(i) == ' ' && prev == "colon"){
-                  System.out.println(sb.toString()+" came in space");
-                    prev = "space";
-                    values.add(sb.toString());
-                    sb.setLength(0);
-                }
-
-                else if(command.charAt(i) == ':' && prev == "space"){
-                  System.out.println(sb.toString()+" came in colon");
-                        prev = "colon";
-                        values.add(sb.toString());
-                        sb.setLength(0);
-                }
-                else{
-                  return sb.toString()+" is not valid key";
-                }
+            //validating each command then insert into list
+            if(command.charAt(i) == ' '){
+                break;        
             }
-        } 
-
-
-
-
-        if (sb.length() > 0) {           // add the last value
-            sb.deleteCharAt(sb.length() - 1);
-            values.add(sb.toString());
+        }
+        
+        if (sb.charAt(sb.length()-1) == '=') {
+            sb.deleteCharAt(sb.length()-1);
         }
 
 
-        
-
-        switch(values.get(0)){
+        switch(sb.toString()){
             
             case "ping":
-                return new ping().method(values);
+                return new ping().method(command);
             case "set":
-                return new set().method(values);
+                return new set().method(command , inventory);
             case "get":
-                return new get().method(values);
+                return new get().method(command, inventory);
             case "exists":
-                return new exists().method(values);
+                return new exists().method(command, inventory);
             case "del":
-                return new del().method(values);
+                return new del().method(command, inventory);
             case "hset":
-                return new hset().method(values);
+                return new hset().method(command, inventory);
             case "hget":
-                return new hget().method(values);
+                return new hget().method(command, inventory);
             case "hgetall":
-                return new hgetall().method(values);
+                return new hgetall().method(command, inventory);
             case "hexists":
-                return new hexists().method(values);
+                return new hexists().method(command, inventory);
             case "hdel":
-                return new hdel().method(values);
+                return new hdel().method(command, inventory);
             default:
-                return "no "+values.get(0)+" found";
+                return "no "+sb.toString()+" found";
         }
 
 

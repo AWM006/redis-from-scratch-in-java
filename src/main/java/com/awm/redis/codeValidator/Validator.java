@@ -3,10 +3,17 @@ package com.awm.redis.codeValidator;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.awm.redis.MethodSelector.SelectMethod;
 
-
+@Component
 public class Validator {
+
+    @Autowired
+    public SelectMethod selector;
 
     public String validating(String argument){
 
@@ -32,7 +39,7 @@ public class Validator {
             //after finish getting the first word check the word is "hello" or not if yes then selector method check which method to call
             if(sb.toString().equals("hello")){
                 sb = null;
-                return new SelectMethod().slector(decoded);
+                return selector.slector(decoded);
             } 
             else{
                 break;
